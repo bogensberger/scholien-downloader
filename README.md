@@ -1,4 +1,7 @@
-# Scholien Parser
+# Scholarium Downloader
+
+The scholarium downloader is a tool to automatically
+download purchased eBooks from https://scholarium.at
 
 Setup a virtualenv:
 
@@ -6,3 +9,7 @@ Setup a virtualenv:
     .venv/bin/python -m pip install -U pip setuptools
     .venv/bin/python -m pip install -r requirements.txt
     .venv/bin/pip install -e .
+
+Run the downloader:
+
+    .venv/bin/download <email> <password>

@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 
 requires = [
-    'beautifulsoup4'
+    'beautifulsoup4',
+    'requests'
 ]
 
 setup(

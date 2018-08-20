@@ -25,7 +25,8 @@ class ScholieSource:
     def filename(self, base_path=None):
         if base_path is None:
             base_path = DEFAULT_TARGET_DIR
-        name = '{}.mobi'.format(self.title().lower())
+        name = '{}.{}'.format(self.title().lower(),
+                              self._file_ending())
         name = name.replace('/', '_').replace(' ', '_')
         return join(base_path, name)
 
@@ -37,6 +38,9 @@ class ScholieSource:
             if input.get('name')
         }
         return form.get('action'), data
+
+    def _file_ending(self):
+        return self.soup.find_all('span')[1].text.lower()
 
 
 class ScholariumWebpage:
@@ -60,7 +64,8 @@ class ScholariumWebpage:
         sources = []
         for table in content_tables:
             for tr in table.find_all('tr'):
-                if tr.find(text='Büchlein') and tr.find(text='Mobi'):
+                if tr.find(text='Büchlein') and \
+                        (tr.find(text='Mobi') or tr.find(text='Epub')):
                     source = ScholieSource(tr)
                     sources.append(source)
         return sources

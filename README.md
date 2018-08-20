@@ -13,3 +13,5 @@ Setup a virtualenv:
 Run the downloader:
 
     .venv/bin/download <email> <password>
+
+The files will be downloaded into the `downloads` folder within this repo.
